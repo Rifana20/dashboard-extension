@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "Student Attendance Extension",
+    "version": "1.0",
+    "description": "Tracks student attendance and transcript summary",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "permissions": []
+  }
+  
