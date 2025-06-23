@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Meeting Extension</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="user-login">
+            Logged in as: <strong id="loggedInUserEmail">Guest</strong>
+            <button id="loginButton" onclick="simulateLogin()">Login with Google</button> <!-- Changed function name -->
+            <button id="logoutButton" style="display:none;">Logout</button>
+        </div>
+        <h1>AI Meeting Dashboard</h1>
+    </header>
+
+    <main class="container" id="dashboardContent" style="display:none;">
+        <aside class="sidebar">
+            <h2>Meeting Tools</h2>
+            <div class="tool-list">
+                <div onclick="addAttendance()">📋 Add Attendance</div>
+                <div onclick="getSummary()">📝 Generate Meet Summary</div>
+                <div onclick="getTranscript()">🗣 Get Transcript</div>
+                <div onclick="prepareAgenda()">📅 Prepare Agenda</div>
+                <div onclick="sendCommand()">💬 Chat Command (Bot)</div>
+                <div onclick="setAlertsUI()">🔔 Set Email Alerts</div>
+                <div onclick="integrateCalendar()">📆 Calendar Integration</div>
+                <div onclick="askAI()">🤖 Ask AI</div>
+                <div onclick="viewDevices()">🖥 Device Status</div>
+                <div onclick="manageTokensUI()">🔑 Manage Tokens</div>
+            </div>
+        </aside>
+
+        <section class="dashboard">
+            <div class="card" id="attendance-card">
+                <h3>Attendance</h3>
+                <p>Participants: <span id="participants">N/A</span></p>
+                <p>Joined &lt; 5 mins: <span id="shortAttendance">N/A</span></p>
+                <ul id="attendance-details"></ul>
+            </div>
+            <div class="card">
+                <h3>Meeting Summary</h3>
+                <textarea placeholder="Summary will appear here..." readonly></textarea>
+            </div>
+            <div class="card">
+                <h3>Transcript</h3>
+                <textarea placeholder="Transcript content..." readonly></textarea>
+            </div>
+            <div class="card">
+                <h3>Next Meeting Agenda</h3>
+                <textarea placeholder="Agenda items..."></textarea>
+            </div>
+            <div class="card">
+                <h3>AI Assistant</h3>
+                <input type="text" id="ai-question" placeholder="Ask anything about the meeting..." />
+                <button onclick="askAI()">Ask</button>
+                <div id="ai-response"></div>
+            </div>
+
+            <div class="card" id="alerts-card" style="display:none;">
+                <h3>Email Alerts Configuration</h3>
+                <input type="text" id="alertKeyword" placeholder="Keyword (e.g., 'deadline')" />
+                <input type="email" id="alertEmail" placeholder="Recipient Email (default: your login email)" />
+                <button onclick="saveAlert()">Save Alert</button>
+                <h4>Your Alerts:</h4>
+                <ul id="alertList">
+                    <!-- Alerts will be listed here dynamically -->
+                </ul>
+            </div>
+
+            <div class="card" id="devices-card" style="display:none;">
+                <h3>Connected Devices</h3>
+                <p><strong>CLI Status:</strong> <span id="cliStatus">Connecting...</span></p>
+                <p><strong>Extension Status:</strong> <span id="extensionStatus">Connecting...</span></p>
+                <p>Last Seen: <span id="lastSeenDevice">N/A</span></p>
+                <button onclick="refreshDeviceStatus()">Refresh Status</button>
+            </div>
+
+            <div class="card" id="tokens-card" style="display:none;">
+                <h3>API Token Management</h3>
+                <p>Tokens allow external tools (like the CLI or Extension) to authenticate with your account.</p>
+                <button onclick="generateToken()">Generate New Token</button>
+                <h4>Your Active Tokens:</h4>
+                <ul id="tokenList">
+                    <!-- Tokens will be listed here dynamically -->
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
