@@ -1,0 +1,217 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+}
+
+header {
+    background-color: #2c3e50; /* Dark blue-grey */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.user-login {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.sidebar {
+    flex: 0 0 250px; /* Fixed width sidebar */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.tool-list div {
+    padding: 12px 10px;
+    margin-bottom: 8px;
+    background-color: #ecf0f1; /* Light grey */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #34495e; /* Darker text */
+}
+
+.tool-list div:hover {
+    background-color: #dde1e2; /* Slightly darker on hover */
+    transform: translateY(-1px);
+}
+
+.tool-list div:active {
+    transform: translateY(0);
+}
+
+
+.dashboard {
+    flex: 1; /* Takes remaining space */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+.card textarea,
+.card input[type="text"],
+.card input[type="email"] { /* Added email input */
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 80px; /* For textareas */
+    resize: vertical; /* Allow vertical resizing for textareas */
+    font-size: 0.95em;
+    font-family: inherit; /* Use body font */
+}
+
+.card input[type="text"],
+.card input[type="email"] {
+    min-height: auto; /* Reset for input */
+    height: 40px;
+}
+
+.card button {
+    background-color: #3498db; /* Blue button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.card button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+#ai-response {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    min-height: 50px;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* New styling for lists within cards */
+#tokenList, #alertList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#tokenList li, #alertList li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-all; /* For long tokens */
+}
+
+#tokenList li button, #alertList li button {
+    background-color: #e74c3c; /* Red for revoke/delete */
+    margin-left: 15px;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    white-space: nowrap; /* Keep button text on one line */
+}
+
+#tokenList li button:hover, #alertList li button:hover {
+    background-color: #c0392b;
+}
+
+.token-id {
+    font-family: 'Courier New', Courier, monospace;
+    color: #555;
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Status colors for devices */
+#cliStatus, #extensionStatus {
+    font-weight: bold;
+    color: #3498db; /* Blue for connecting/unknown */
+}
+#cliStatus.online, #extensionStatus.online {
+    color: #27ae60; /* Green for online */
+}
+#cliStatus.offline, #extensionStatus.offline {
+    color: #e74c3c; /* Red for offline */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: auto; /* Allow sidebar to take full width */
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr; /* Single column layout on small screens */
+    }
+}
